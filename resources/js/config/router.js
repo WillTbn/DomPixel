@@ -7,7 +7,7 @@ import Documentation from '../template/Documentation.vue'
 Vue.use(VueRouter)
 const routes = [
     {path: '/', name:'Home', component: Home},
-    {path: '/Documentation', name:'Documentação', component: Documentation}
+    {path: '/Documentation', name:'Catálogo de Produtos', component: Documentation}
 ];
 
 const router = new VueRouter({

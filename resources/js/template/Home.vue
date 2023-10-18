@@ -1,6 +1,6 @@
 <template>
     <div>
-        Estou na Home!!!
+        Catálogo de Produtos
         <control-product/>
     </div>
 </template>
