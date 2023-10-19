@@ -1,66 +1,72 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Teste FullStack 
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+-> Back-end
 
-## About Laravel
+* MVC
+* Docker
+* Laravel10x
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+->front-end
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+* Vue.js 2
+* Bootstrap Vue
+* Vite
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Referência
 
-## Learning Laravel
+ - [Laravel](https://laravel.com/docs/10.x)
+ - [Vue.js](https://br.vuejs.org/v2/guide/installation.html)
+ - [bootstrap-vue](https://bootstrap-vue.org/)
+ - [vite](https://v3.vitejs.dev/)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Instalação
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Antes de começamos vamos intender oque vamos fazer e quais possiveis caminhos, aqui eu optei por fazer o projeto com docker, logo pre-requisito é te o mesmo já rodando em sua maquina. 
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Se preferi pode roda na sua maquina local, mas vai precisa de no minimo php8 para roda com o laravel, junto com vue cliente para vue.js 2, aqui um [link](https://br.vuejs.org/v2/guide/installation.html), verá na pagina oficial do vuejs, se roda o vue.js2 não tera problema alguma em colocar o vite3 como dependencia, ja configurado aqui.
 
-## Laravel Sponsors
+Meu guia é para docker com docker:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+1. Crie o containeres do laravel,ele ira cria o projeto laravel e o banco mysql, configuração esta no docker-compose.
+Voce pode verificar o .env e edita-lo como acha necessario.
 
-### Premium Partners
+```
+docker composer up -d
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+2. Eu indico roda proximo comando dentro da imagem docker, assim evitando possiveis conflitos locais e não avento necessidade de instalação de mais nada para roda o projeto.
 
-## Contributing
+```
+composer install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+3. Ainda dentro do container rode o comando para roda as migrations junto das seed's, assim já terá um banco de dados com dados facticicios, usei o Factory.
 
-## Code of Conduct
+```
+php artisan make:migrate --seed
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+4. Vamos roda agora o necessario para front-end:
 
-## Security Vulnerabilities
+```
+npm run install
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+5. Agora só falta roda serve do front, já esta tudo configurado para fazer os apontamentos no vite.config.js:
 
-## License
+```
+npm run serve
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Se tudo deu certo deve esta vendo algo como abaixo no seu terminal:
+
+  ➜  Local:   http://localhost:5173/
+
+  ➜  Network: http://172.18.0.7:5173/
+
+  ➜  press h to show help
+
+  LARAVEL v10.28.0  plugin v0.8.1
+
+  ➜  APP_URL: http://localhost
+## Dificuldades

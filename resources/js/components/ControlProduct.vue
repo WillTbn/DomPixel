@@ -139,7 +139,7 @@
                             </div>
                         </template>
                         <template #cell(action)="row">
-                            <b-button variant="warning" @click="loadDe(row.item, 'edit')" class="mr-md-2" size="sm">
+                            <b-button variant="info" @click="loadDe(row.item, 'edit')" class="mr-md-2" size="sm">
                                 <b-icon icon="tools"></b-icon>
                             </b-button>
                             <b-button variant="danger" @click="loadDe(row.item, 'remove')" class="mr-2" size="sm">

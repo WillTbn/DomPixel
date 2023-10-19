@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-navbar toggleable="xl">
+        <b-navbar toggleable="xl" type="white">
             <b-navbar-brand style="margin-right:0 !important" class="w-50">
                 <b-img src="http://localhost/jorgenunes.png" class="brand-control"></b-img>
             </b-navbar-brand>
@@ -8,11 +8,11 @@
 
             <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav class="ml-auto">
-                    <b-nav-item href="#">
-                        <router-link to="/">Sobre projeto</router-link>
+                    <b-nav-item >
+                        <router-link to="/" active-class="active" exact class="nav-link">Sobre projeto</router-link>
                     </b-nav-item>
-                    <b-nav-item href="#">
-                        <router-link to="/Products">Catálogo de Produtos </router-link>
+                    <b-nav-item >
+                        <router-link to="/Products" active-class="active" exact class="nav-link">Catalogo de Produtos</router-link>
                     </b-nav-item>
                 </b-navbar-nav>
             </b-collapse>

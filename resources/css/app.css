@@ -1,3 +1,13 @@
 body{
     background-color: #c5d1db !important;
 }
+.nav-link a:hover {
+    color:#6978F4 !important;
+    background-color: rgba(88, 84, 84, .3) !important;
+    border-radius: 0.2rem;
+}
+.nav-link .active{
+    color:#6978F4 !important;
+    background-color: rgba(88, 84, 84, .3) !important;
+    border-radius: 0.2rem;
+}
