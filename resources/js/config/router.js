@@ -6,8 +6,16 @@ import Home from '../template/Home.vue'
 
 Vue.use(VueRouter)
 const routes = [
-    {path: '/', name:'sobre', component: Home},
-    {path: '/Products', name:'Catálogo de Produtos', component: Products},
+    {
+        path: '/',
+        name:'sobre',
+        component: Home
+    },
+    {
+        path: '/Products',
+        name:'Catátogo de Produtos',
+        component: Products
+    },
 ];
 
 const router = new VueRouter({
