@@ -23,6 +23,7 @@
         >
             <template #modal-header="{ close }">
                 <!-- Emulate built in modal header close button action -->
+                <div style="display:none">{{ close }}</div>
                 <h5>{{ status.name }}</h5>
                 <b-button size="sm"
                     variant="outline-danger"
@@ -59,11 +60,11 @@
                                 <b-form-input
                                     :class="{'border border-danger' : error['price'] }"
                                     id="product-price"
-                                    type="text"
-                                    v-model="product.price"
+                                    type="number"
+                                    v-model.number="product.price"
+                                    step="0.001"
                                     placeholder="Digite o preço do Produto..."
                                     :readonly="mode === 'remove'"
-
                                     ></b-form-input>
                                     <div class=""  v-if="error['price']">
                                         <alerts-erros
@@ -82,6 +83,7 @@
                                     id="product-quantity"
                                     v-model="product.quantity"
                                     :readonly="mode === 'remove'"
+                                    type="number"
                                     placeholder="Quantidade que deseja adicionar"
                                 ></b-form-input>
                                 <div class=""  v-if="error['quantity']">
@@ -116,21 +118,25 @@
             </b-container>
         </b-modal>
         <b-overlay :show="show" rounded="sm">
+
             <b-container >
                 <div class="text-right">
                     <p class="font-weight-bold ml-auto">Total de produtos :{{ products.length }}</p>
                 </div>
+
+
                 <transition name="slide" type="animation"  >
                     <b-table
                         class="mt-3"
                         table-variant="light"
-                        show
-                        v-show="view"
                         hover
-                        :busy="isBusy"
-                        :items="products"
-                        :fields="fields"
                         responsive="md"
+                        id="my-table"
+                        :items="products"
+                        :per-page="perPage"
+                        :current-page="currentPage"
+                        :fields="fields"
+                        small
                     >
                         <template #table-busy>
                             <div class="text-center text-danger my-2">
@@ -148,7 +154,15 @@
                         </template>
                     </b-table>
                 </transition>
+                <b-pagination
+                    v-model="currentPage"
+                    :total-rows="rows"
+                    :per-page="perPage"
+                    aria-controls="my-table"
+                    align="center"
+                ></b-pagination>
             </b-container>
+
 
         </b-overlay>
 
@@ -157,11 +171,14 @@
 <script>
 import register from '../mixins/register.js'
 import AlertsErros from './AlertsErros.vue'
+import TablePag from './TablePag.vue'
 export default {
     name:'ControlProduct',
-    components:{AlertsErros},
+    components:{AlertsErros, TablePag},
     data(){
         return{
+            perPage: 10,
+            currentPage: 1,
             status:{name: 'Registrando Produto', bgHeader:"success", textVariant:"light"},
             mode:'save',
             show:true,
@@ -196,6 +213,11 @@ export default {
             ]
         }
     },
+    computed: {
+        rows() {
+          return this.products.length
+        }
+      },
     mixins:[register]
 }
 </script>
