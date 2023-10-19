@@ -1,23 +1,19 @@
 <template>
     <div>
-        <b-navbar>
-            <b-navbar-brand>
-                <b-img src="https://jorgenunes.vercel.app/assets/img/icones/JorgeNunes.png" class="w-25"></b-img>
+        <b-navbar toggleable="xl">
+            <b-navbar-brand style="margin-right:0 !important" class="w-50">
+                <b-img src="http://localhost/jorgenunes.png" class="brand-control"></b-img>
             </b-navbar-brand>
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
             <b-collapse id="nav-collapse" is-nav>
-                <b-navbar-nav>
-                    <b-nav-item href="#"><router-link to="/">Home</router-link></b-nav-item>
-                    <b-nav-item href="#"><router-link to="/Documentation">Sobre</router-link></b-nav-item>
-                </b-navbar-nav>
-
-                <!-- Right aligned nav items -->
                 <b-navbar-nav class="ml-auto">
-                    <b-nav-form>
-                    <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
-                    <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
-                    </b-nav-form>
+                    <b-nav-item href="#">
+                        <router-link to="/">Sobre projeto</router-link>
+                    </b-nav-item>
+                    <b-nav-item href="#">
+                        <router-link to="/Products">Catálogo de Produtos </router-link>
+                    </b-nav-item>
                 </b-navbar-nav>
             </b-collapse>
         </b-navbar>
@@ -30,3 +26,11 @@
         </transition>
     </div>
 </template>
+<style>
+.brand-control{
+    width: 25%;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+    mix-blend-mode: color-burn;
+}
+</style>

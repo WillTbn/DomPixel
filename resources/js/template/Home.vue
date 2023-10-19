@@ -1,12 +1,9 @@
 <template>
     <div>
-        Catálogo de Produtos
-        <control-product/>
+        Sobre Projeto!
+
     </div>
 </template>
 <script>
-import ControlProduct from '../components/ControlProduct.vue';
-export default {
-    components:{ControlProduct}
-}
+
 </script>
